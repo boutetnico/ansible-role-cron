@@ -9,7 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 @pytest.mark.parametrize('name', [
-  ('cron')
+  ('cron'),
 ])
 def test_packages_are_installed(host, name):
     package = host.package(name)
@@ -25,13 +25,14 @@ def test_crontab_jobs_exist(host, job, user):
     assert job in jobs
 
 
-@pytest.mark.parametrize('file,job,user', [
-  ('rsync', 'root * * * * * rsync -a /mnt /backup', 'root')
+@pytest.mark.parametrize('file,job', [
+  ('rsync', '* * * * * root rsync -a /mnt /backup'),
+  ('backup_database', '@daily admin /home/admin/mysqldump.sh'),
 ])
-def test_cron_file_jobs_exist(host, file, job, user):
+def test_cron_files_exist(host, file, job):
     cron_file = host.file('/etc/cron.d/' + file)
     assert cron_file.exists
     assert cron_file.is_file
-    assert cron_file.user == user
-    assert cron_file.group in [user, 'users']
+    assert cron_file.user == 'root'
+    assert cron_file.group == 'root'
     assert cron_file.contains(job)

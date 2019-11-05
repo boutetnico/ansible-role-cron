@@ -38,7 +38,7 @@ Example Playbook
       roles:
         - ansible-role-cron
           cron_jobs:
-            - name: "run backup script every 6 hours as admin user"
+            - name: "run backup script every 6 hours as admin"
               job: backup.sh
               hour: "*/6"
               minute: 0
@@ -50,6 +50,12 @@ Example Playbook
               job: "rsync -a /mnt /backup"
               cron_file: "rsync"
               user: root
+            - name: "backup database daily using /etc/cron.d/backup_database as admin"
+              job: "/home/admin/mysqldump.sh"
+              cron_file: "backup_database"
+              special_time: "daily"
+              user: admin
+
 
 Testing
 -------
