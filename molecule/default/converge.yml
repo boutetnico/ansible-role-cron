@@ -2,14 +2,6 @@
 - name: Converge
   hosts: all
 
-  pre_tasks:
-    - name: create test users
-      become: yes
-      user:
-        name: admin
-        home: /home/admin
-        createhome: yes
-
   roles:
     - role: ansible-role-cron
       cron_jobs:

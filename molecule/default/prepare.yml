@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+
+  tasks:
+    - name: create test users
+      become: true
+      user:
+        name: admin
+        home: /home/admin
+        createhome: true
