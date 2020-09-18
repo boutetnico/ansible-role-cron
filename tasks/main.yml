@@ -3,6 +3,7 @@
   apt:
     name: "{{ cron_dependencies }}"
     state: present
+    update_cache: true
 
 - name: Install cron jobs
   cron:
