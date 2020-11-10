@@ -1,3 +1,6 @@
+[![tests](https://github.com/boutetnico/ansible-role-cron/workflows/Test%20ansible%20role/badge.svg)](https://github.com/boutetnico/ansible-role-cron/actions?query=workflow%3A%22Test+ansible+role%22)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-boutetnico.cron-blue.svg)](https://galaxy.ansible.com/boutetnico/cron)
+
 ansible-role-cron
 =================
 
@@ -6,7 +9,7 @@ This role configures cron jobs.
 Requirements
 ------------
 
-Ansible 2.6 or newer.
+Ansible 2.7 or newer.
 
 Supported Platforms
 -------------------
@@ -19,10 +22,10 @@ Supported Platforms
 Role Variables
 --------------
 
-| Variable                     | Required | Default                         | Choices   | Comments                                      |
-|------------------------------|----------|---------------------------------|-----------|-----------------------------------------------|
-| cron_dependencies            | yes      | `[cron]`                        | list      |                                               |
-| cron_jobs                    | yes      | `[]`                            | list      | Cron jobs to install. See `defaults/main.yml` |
+| Variable                | Required | Default               | Choices   | Comments                                       |
+|-------------------------|----------|-----------------------|-----------|------------------------------------------------|
+| cron_dependencies       | yes      | `[cron]`              | list      |                                                |
+| cron_jobs               | yes      | `[]`                  | list      | Cron jobs to install. See `defaults/main.yml`. |
 
 Dependencies
 ------------
