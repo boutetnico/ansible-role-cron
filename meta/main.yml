@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: cron
   author: Nicolas Boutet
-  description: Configure cron jobs
+  description: Configure cron jobs.
   license: MIT
   min_ansible_version: 2.7
   platforms:
@@ -12,8 +12,8 @@ galaxy_info:
         - focal
     - name: Debian
       versions:
-        - stretch
         - buster
+        - stretch
   galaxy_tags:
     - cron
     - crontab
