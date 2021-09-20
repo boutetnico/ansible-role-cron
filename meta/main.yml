@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: cron
+  namespace: boutetnico
   author: Nicolas Boutet
   description: Configure cron jobs.
   license: MIT
