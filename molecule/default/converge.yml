@@ -3,7 +3,7 @@
   hosts: all
 
   roles:
-    - role: ansible-role-cron
+    - role: boutetnico.cron
       cron_jobs:
         - name: "run backup script every 6 hours as admin"
           job: backup.sh

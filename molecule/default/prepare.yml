@@ -5,7 +5,7 @@
   tasks:
     - name: create test users
       become: true
-      user:
+      ansible.builtin.user:
         name: admin
         home: /home/admin
         createhome: true
