@@ -3,9 +3,9 @@
   hosts: all
 
   tasks:
-    - name: create test users
+    - name: Create test users
       become: true
-      user:
+      ansible.builtin.user:
         name: admin
         home: /home/admin
         createhome: true
