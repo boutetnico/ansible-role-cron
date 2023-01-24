@@ -1,7 +1,7 @@
 ---
 dependency:
   name: galaxy
-  enbaled: False
+  enabled: False
 
 driver:
   name: docker
