@@ -7,10 +7,10 @@ driver:
   name: docker
 
 platforms:
-  - name: ansible-role-cron-debian-10
-    image: debian:10
   - name: ansible-role-cron-debian-11
     image: debian:11
+  - name: ansible-role-cron-debian-12
+    image: debian:12
   - name: ansible-role-cron-ubuntu-2004
     image: ubuntu:20.04
   - name: ansible-role-cron-ubuntu-2204
