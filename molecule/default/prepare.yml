@@ -8,4 +8,4 @@
       ansible.builtin.user:
         name: admin
         home: /home/admin
-        createhome: true
+        create_home: true
