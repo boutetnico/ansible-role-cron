@@ -7,9 +7,14 @@ import pytest
         ("cron"),
     ],
 )
-def test_packages_are_installed(host, name):
+def test_dependencies_are_installed(host, name):
     package = host.package(name)
     assert package.is_installed
+
+
+def test_crontab_command_is_available(host):
+    cmd = host.run("which crontab")
+    assert cmd.rc == 0
 
 
 @pytest.mark.parametrize(
@@ -25,16 +30,17 @@ def test_crontab_jobs_exist(host, job, user):
 
 
 @pytest.mark.parametrize(
-    "file,job",
+    "file,job,mode",
     [
-        ("rsync", "* * * * * root rsync -a /mnt /backup"),
-        ("backup_database", "@daily admin /home/admin/mysqldump.sh"),
+        ("rsync", "* * * * * root rsync -a /mnt /backup", 0o644),
+        ("backup_database", "@daily admin /home/admin/mysqldump.sh", 0o644),
     ],
 )
-def test_cron_files_exist(host, file, job):
+def test_cron_files_exist(host, file, job, mode):
     cron_file = host.file("/etc/cron.d/" + file)
     assert cron_file.exists
     assert cron_file.is_file
     assert cron_file.user == "root"
     assert cron_file.group == "root"
+    assert cron_file.mode == mode
     assert cron_file.contains(job)
